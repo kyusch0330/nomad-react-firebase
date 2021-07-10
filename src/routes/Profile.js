@@ -1,3 +1,19 @@
-import React from 'react';
+import React from "react";
+import { authService } from "myFirebase";
+import { useHistory } from "react-router-dom";
 
-export default () => <span>Profile</span>
+const Profile = (props) => {
+  const history = useHistory();
+  const handleLogoutClick = () => {
+    authService.signOut();
+    history.push("/");
+  };
+  return (
+    <>
+      <span>Profile</span>
+      <button onClick={handleLogoutClick}>Log out</button>
+    </>
+  );
+};
+
+export default Profile;
