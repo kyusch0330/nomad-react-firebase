@@ -1,33 +1,30 @@
-import { authService, dbService } from "myFirebase";
+import { dbService } from "myFirebase";
 import React, { useState, useEffect } from "react";
+import Kweet from "components/Kweet";
 
-const Home = () => {
+const Home = ({ userObj }) => {
   const [kweet, setKweet] = useState("");
   const [kweets, setKweets] = useState([]);
-  const getKweets = async () => {
-    const kweetsFromDB = await dbService.collection("kweets").get();
-    let _kweets = [];
-    kweetsFromDB.forEach((document) => {
-      const kweetObject = {
-        ...document.data(),
-        id: document.id,
-      };
-      _kweets = [kweetObject, ..._kweets];
-    });
-    setKweets(_kweets);
-  };
+
   useEffect(() => {
-    getKweets();
+    //onSnapshot : db의 변화를 감지하는 listner (real time)
+    dbService.collection("kweets").onSnapshot((snapshot) => {
+      const kweetArray = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setKweets(kweetArray);
+    });
   }, []);
   const onSubmit = async (event) => {
     event.preventDefault();
     //새로운 document를 collection에 저장(document id 자동 부여)
     await dbService.collection("kweets").add({
-      kweet, // = kweet:kweet
+      text: kweet,
       createdAt: Date.now(),
-      author: authService.currentUser.email,
+      creatorId: userObj.uid,
+      email: userObj.email,
     });
-    getKweets();
     setKweet("");
   };
   const onChange = (event) => {
@@ -36,7 +33,7 @@ const Home = () => {
     } = event;
     setKweet(value);
   };
-  console.log(kweets);
+  // console.log(kweets);
   return (
     <div>
       <form onSubmit={onSubmit}>
@@ -52,9 +49,11 @@ const Home = () => {
       <div>
         {kweets.map((kweet) => {
           return (
-            <div key={kweet.id}>
-              <span>{kweet.author}</span> : <span>{kweet.kweet}</span>
-            </div>
+            <Kweet
+              key={kweet.id}
+              kweetObj={kweet}
+              isOwner={kweet.creatorId === userObj.uid}
+            />
           );
         })}
       </div>
