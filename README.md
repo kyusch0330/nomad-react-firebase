@@ -1,7 +1,15 @@
-# Cloning twitter with React and Firebasenp
+# Cloning twitter with React and Firebase
 
 ## Client
-### react
-  
+
+#### react
+
+#### react-router
+
+#### react-hook
+
+---
+
 ## Server
-### firebase
+
+#### firebase
