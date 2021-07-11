@@ -1,4 +1,4 @@
-import { dbService } from "myFirebase";
+import { dbService, storageService } from "myFirebase";
 import React, { useState } from "react";
 
 const Kweet = ({ kweetObj, isOwner }) => {
@@ -9,6 +9,8 @@ const Kweet = ({ kweetObj, isOwner }) => {
     if (ok) {
       //delete
       await dbService.doc(`kweets/${kweetObj.id}`).delete();
+      //url에서 reference를 얻어 storage의 이미지파일 삭제
+      await storageService.refFromURL(kweetObj.attachmentUrl).delete();
     }
   };
   const toggleEditing = () => {
@@ -49,15 +51,20 @@ const Kweet = ({ kweetObj, isOwner }) => {
           <button onClick={toggleEditing}>Cancel</button>
         </>
       ) : (
-        isOwner && (
-          <>
-            <div>
-              <span>{kweetObj.email}</span> : <span>{kweetObj.text}</span>
-            </div>
-            <button onClick={handleDeleteClick}>Delete Kweet</button>
-            <button onClick={toggleEditing}>Edit Kweet</button>
-          </>
-        )
+        <>
+          <div>
+            <span>{kweetObj.email}</span> : <span>{kweetObj.text}</span>
+          </div>
+          {kweetObj.attachmentUrl && (
+            <img src={kweetObj.attachmentUrl} width="50px" />
+          )}
+          {isOwner && (
+            <>
+              <button onClick={handleDeleteClick}>Delete Kweet</button>
+              <button onClick={toggleEditing}>Edit Kweet</button>
+            </>
+          )}
+        </>
       )}
     </div>
   );
