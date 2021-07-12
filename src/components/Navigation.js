@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Navigation = () => {
+const Navigation = ({ userObj, refreshUser }) => {
   return (
     <nav>
       <ul>
@@ -14,7 +14,7 @@ const Navigation = () => {
               pathname: "/profile",
             }}
           >
-            My Profile
+            {userObj.displayName}'s Profile
           </Link>
         </li>
       </ul>

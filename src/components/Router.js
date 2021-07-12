@@ -11,10 +11,10 @@ import Profile from "routes/Profile";
 import Navigation from "components/Navigation";
 // src폴더를 base로 한 경로로 설정되어 있음
 
-const AppRouter = ({ isLoggedIn, userObj }) => {
+const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
   return (
     <Router>
-      {isLoggedIn && <Navigation />}
+      {isLoggedIn && <Navigation userObj={userObj} />}
       {/* 로그인 상태에 따라 라우트 구성이 달라짐 */}
       <Switch>
         {isLoggedIn ? (
@@ -24,7 +24,7 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
               <Home userObj={userObj} />
             </Route>
             <Route exact path="/profile">
-              <Profile />
+              <Profile userObj={userObj} refreshUser={refreshUser} />
             </Route>
             {/* <Redirect from="*" to="/" /> */}
           </>

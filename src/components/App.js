@@ -12,6 +12,7 @@ function App() {
     authService.onAuthStateChanged((user) => {
       if (user) {
         //로그인 O
+        if (!user.displayName) user.updateProfile({ displayName: "user" });
         setUserObj(user);
       } else {
         //로그인 X
@@ -20,10 +21,25 @@ function App() {
       setInit(true);
     });
   }, []);
+  const refreshUser = () => {
+    const user = authService.currentUser;
+    // setUserObj(user)는 리액트의 얕은 비교에 의해 같은 값으로 여겨지기 때문에 아래와 같이 작성
+    // 혹은 setUserObj(Object.assign({}, user));
+    setUserObj({
+      displayName: user.displayName,
+      uid: user.uid,
+      // 우리가 원하는 function을 얻기 위한 중간 function 역할
+      updateProfile: (args) => user.updateProfile(args),
+    });
+  };
   return (
     <>
       {init ? (
-        <AppRouter isLoggedIn={Boolean(userObj)} userObj={userObj} />
+        <AppRouter
+          isLoggedIn={Boolean(userObj)}
+          userObj={userObj}
+          refreshUser={refreshUser}
+        />
       ) : (
         "Initializing..."
       )}
