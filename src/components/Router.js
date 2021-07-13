@@ -18,7 +18,16 @@ const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
       {/* 로그인 상태에 따라 라우트 구성이 달라짐 */}
       <Switch>
         {isLoggedIn ? (
-          <>
+          <div
+            style={{
+              maxWidth: 890,
+              width: "100%",
+              margin: "0 auto",
+              marginTop: 80,
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
             {/* Fragment */}
             <Route exact path="/">
               <Home userObj={userObj} />
@@ -27,7 +36,7 @@ const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
               <Profile userObj={userObj} refreshUser={refreshUser} />
             </Route>
             {/* <Redirect from="*" to="/" /> */}
-          </>
+          </div>
         ) : (
           <>
             <Route exact path="/">

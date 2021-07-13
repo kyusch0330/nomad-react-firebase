@@ -1,45 +1,9 @@
 import { authService, firebaseInstance } from "myFirebase";
-import React, { useState } from "react";
+import React from "react";
+import AuthForm from "./AuthForm";
+import "./Auth.css";
 
 const Auth = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassWord] = useState("");
-  const [newAccount, setNewAccount] = useState(true);
-  const onChange = (event) => {
-    const {
-      target: { name, value },
-    } = event;
-    if (name === "email") {
-      setEmail(value); //xzczxc
-    } else {
-      setPassWord(value);
-    }
-  };
-  const onSubmit = async (event) => {
-    // prevent refresh
-    event.preventDefault();
-    try {
-      let data;
-      if (newAccount) {
-        data = await authService.createUserWithEmailAndPassword(
-          email,
-          password
-        );
-        // createUser와 동시에 로그인도 수행함
-      } else {
-        data = await authService.signInWithEmailAndPassword(email, password);
-        console.log("sign in...");
-      }
-    } catch (error) {
-      alert(error.message);
-    }
-  };
-
-  // Create User 와 Sign In 토글
-  const toggleAccount = () => {
-    setNewAccount((prev) => !prev);
-  };
-
   // Social login
   const onSocialClick = async (event) => {
     const {
@@ -57,31 +21,7 @@ const Auth = () => {
 
   return (
     <div>
-      <form onSubmit={onSubmit}>
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          required
-          value={email}
-          onChange={onChange}
-        />
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          required
-          value={password}
-          onChange={onChange}
-        />
-        <input
-          type="submit"
-          value={newAccount ? "Create Account" : "Sign In"}
-        />
-      </form>
-      <span onClick={toggleAccount}>
-        {newAccount ? "Sign In" : "Create Account"}
-      </span>
+      <AuthForm />
       <br />
       <button onClick={onSocialClick} name="google">
         Continue with Google

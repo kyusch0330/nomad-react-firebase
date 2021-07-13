@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { authService, dbService } from "myFirebase";
 import { useHistory } from "react-router-dom";
+import "./Profile.css";
 
 const Profile = ({ userObj, refreshUser }) => {
   const history = useHistory();
@@ -36,19 +37,27 @@ const Profile = ({ userObj, refreshUser }) => {
     setNewDisplayName(value);
   };
   return (
-    <>
-      <form onSubmit={handleSubmit}>
+    <div className="container">
+      <form onSubmit={handleSubmit} className="profileForm">
         <input
           onChange={handleChange}
-          value={newDisplayName}
+          autoFocus
           type="text"
+          value={newDisplayName}
           placeholder="Display name"
+          className="formInput"
         />
-        <input type="submit" value="Update Profile" />
+        <input
+          type="submit"
+          value="Update Profile"
+          className="formBtn"
+          style={{ marginTop: 10 }}
+        />
       </form>
-      <span>Profile</span>
-      <button onClick={handleLogoutClick}>Log out</button>
-    </>
+      <span className="formBtn cancelBtn logOut" onClick={handleLogoutClick}>
+        Log out
+      </span>
+    </div>
   );
 };
 
