@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/nomad_firebase_twitter/static/css/main.a5cb2be2.chunk.css",
-    "main.js": "/nomad_firebase_twitter/static/js/main.9ec9404f.chunk.js",
-    "main.js.map": "/nomad_firebase_twitter/static/js/main.9ec9404f.chunk.js.map",
-    "runtime-main.js": "/nomad_firebase_twitter/static/js/runtime-main.98b77287.js",
-    "runtime-main.js.map": "/nomad_firebase_twitter/static/js/runtime-main.98b77287.js.map",
-    "static/js/2.29f4fcc4.chunk.js": "/nomad_firebase_twitter/static/js/2.29f4fcc4.chunk.js",
-    "static/js/2.29f4fcc4.chunk.js.map": "/nomad_firebase_twitter/static/js/2.29f4fcc4.chunk.js.map",
-    "index.html": "/nomad_firebase_twitter/index.html",
-    "static/css/main.a5cb2be2.chunk.css.map": "/nomad_firebase_twitter/static/css/main.a5cb2be2.chunk.css.map",
-    "static/js/2.29f4fcc4.chunk.js.LICENSE.txt": "/nomad_firebase_twitter/static/js/2.29f4fcc4.chunk.js.LICENSE.txt"
+    "main.css": "/react-firebase-twitter/static/css/main.a5cb2be2.chunk.css",
+    "main.js": "/react-firebase-twitter/static/js/main.9ec9404f.chunk.js",
+    "main.js.map": "/react-firebase-twitter/static/js/main.9ec9404f.chunk.js.map",
+    "runtime-main.js": "/react-firebase-twitter/static/js/runtime-main.ccf41ba0.js",
+    "runtime-main.js.map": "/react-firebase-twitter/static/js/runtime-main.ccf41ba0.js.map",
+    "static/js/2.24075160.chunk.js": "/react-firebase-twitter/static/js/2.24075160.chunk.js",
+    "static/js/2.24075160.chunk.js.map": "/react-firebase-twitter/static/js/2.24075160.chunk.js.map",
+    "index.html": "/react-firebase-twitter/index.html",
+    "static/css/main.a5cb2be2.chunk.css.map": "/react-firebase-twitter/static/css/main.a5cb2be2.chunk.css.map",
+    "static/js/2.24075160.chunk.js.LICENSE.txt": "/react-firebase-twitter/static/js/2.24075160.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.98b77287.js",
-    "static/js/2.29f4fcc4.chunk.js",
+    "static/js/runtime-main.ccf41ba0.js",
+    "static/js/2.24075160.chunk.js",
     "static/css/main.a5cb2be2.chunk.css",
     "static/js/main.9ec9404f.chunk.js"
   ]
