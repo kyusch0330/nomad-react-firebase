@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/react-firebase-twitter/static/css/main.0a95c3e7.chunk.css",
-    "main.js": "/react-firebase-twitter/static/js/main.843913f7.chunk.js",
-    "main.js.map": "/react-firebase-twitter/static/js/main.843913f7.chunk.js.map",
+    "main.css": "/react-firebase-twitter/static/css/main.763d9f3b.chunk.css",
+    "main.js": "/react-firebase-twitter/static/js/main.ddac0efc.chunk.js",
+    "main.js.map": "/react-firebase-twitter/static/js/main.ddac0efc.chunk.js.map",
     "runtime-main.js": "/react-firebase-twitter/static/js/runtime-main.ccf41ba0.js",
     "runtime-main.js.map": "/react-firebase-twitter/static/js/runtime-main.ccf41ba0.js.map",
     "static/js/2.c3e41108.chunk.js": "/react-firebase-twitter/static/js/2.c3e41108.chunk.js",
     "static/js/2.c3e41108.chunk.js.map": "/react-firebase-twitter/static/js/2.c3e41108.chunk.js.map",
     "index.html": "/react-firebase-twitter/index.html",
-    "static/css/main.0a95c3e7.chunk.css.map": "/react-firebase-twitter/static/css/main.0a95c3e7.chunk.css.map",
+    "static/css/main.763d9f3b.chunk.css.map": "/react-firebase-twitter/static/css/main.763d9f3b.chunk.css.map",
     "static/js/2.c3e41108.chunk.js.LICENSE.txt": "/react-firebase-twitter/static/js/2.c3e41108.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.ccf41ba0.js",
     "static/js/2.c3e41108.chunk.js",
-    "static/css/main.0a95c3e7.chunk.css",
-    "static/js/main.843913f7.chunk.js"
+    "static/css/main.763d9f3b.chunk.css",
+    "static/js/main.ddac0efc.chunk.js"
   ]
 }
