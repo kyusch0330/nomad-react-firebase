@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { dbService, storageService } from "myFirebase";
+import { dbService } from "myFirebase";
 import Kweet from "components/Kweet";
 import KweetFactory from "components/KweetFactory";
 
@@ -12,6 +12,8 @@ const Home = ({ userObj }) => {
         id: doc.id,
         ...doc.data(),
       }));
+      //시간순 정렬
+      kweetArray.sort((k1, k2) => k2.createdAt - k1.createdAt);
       setKweets(kweetArray);
     });
   }, []);
@@ -19,7 +21,7 @@ const Home = ({ userObj }) => {
   return (
     <div className="container">
       <KweetFactory userObj={userObj} />
-      <div style={{ marginTop: 30 }}>
+      <div style={{ margin: "30px 0" }}>
         {kweets.map((kweet) => {
           return (
             <Kweet

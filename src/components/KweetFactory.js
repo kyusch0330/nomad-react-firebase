@@ -28,7 +28,7 @@ const KweetFactory = ({ userObj }) => {
       text: kweet,
       createdAt: Date.now(),
       creatorId: userObj.uid,
-      email: userObj.email,
+      name: userObj.displayName,
       attachmentUrl,
     };
     //새로운 document를 collection에 저장(document id 자동 부여)
@@ -62,7 +62,7 @@ const KweetFactory = ({ userObj }) => {
   // 첨부 이미지 미리보기 제거
   const handleClearAttachment = () => setAttachment("");
   return (
-    <form onSubmit={onSubmit} classNmae="factoryForm">
+    <form onSubmit={onSubmit} className="factoryForm">
       <div className="factoryInput__container">
         <input
           className="factoryInput__input"
@@ -74,7 +74,7 @@ const KweetFactory = ({ userObj }) => {
         />
         <input type="submit" value="&rarr;" className="factoryInput__arrow" />
       </div>
-      <label for="attach-file" className="factoryInput__label">
+      <label htmlFor="attach-file" className="factoryInput__label">
         <span>Add photo</span>
         <FontAwesomeIcon icon={faPlus} />
       </label>
@@ -93,6 +93,7 @@ const KweetFactory = ({ userObj }) => {
             style={{
               backgroundImage: attachment,
             }}
+            alt="attachment"
           />
           <div className="factoryForm__clear" onClick={handleClearAttachment}>
             <span>Remove</span>

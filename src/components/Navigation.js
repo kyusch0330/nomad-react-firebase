@@ -10,7 +10,7 @@ const Navigation = ({ userObj, refreshUser }) => {
       <ul style={{ display: "flex", justifyContent: "center", marginTop: 50 }}>
         <li>
           <Link to="/">
-            <FontAwesomeIcon icon={faTwitter} color={"#00A0F0"} size="2x" />
+            <FontAwesomeIcon icon={faTwitter} color={"#deaeee"} size="2x" />
           </Link>
         </li>
         <li>
@@ -26,7 +26,7 @@ const Navigation = ({ userObj, refreshUser }) => {
               fontSize: 12,
             }}
           >
-            <FontAwesomeIcon icon={faUser} color={"#00A0F0"} size="2x" />
+            <FontAwesomeIcon icon={faUser} color={"#deaeee"} size="2x" />
             <span style={{ marginTop: 10 }}>
               {userObj.displayName}'s Profile
             </span>

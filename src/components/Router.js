@@ -3,7 +3,7 @@ import {
   HashRouter as Router,
   Route,
   Switch,
-  Redirect,
+  //Redirect,
 } from "react-router-dom";
 import Auth from "routes/Auth";
 import Home from "routes/Home";
@@ -17,34 +17,38 @@ const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
       {isLoggedIn && <Navigation userObj={userObj} />}
       {/* 로그인 상태에 따라 라우트 구성이 달라짐 */}
       <Switch>
-        {isLoggedIn ? (
-          <div
-            style={{
-              maxWidth: 890,
-              width: "100%",
-              margin: "0 auto",
-              marginTop: 80,
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            {/* Fragment */}
-            <Route exact path="/">
-              <Home userObj={userObj} />
-            </Route>
-            <Route exact path="/profile">
-              <Profile userObj={userObj} refreshUser={refreshUser} />
-            </Route>
-            {/* <Redirect from="*" to="/" /> */}
-          </div>
-        ) : (
-          <>
-            <Route exact path="/">
-              <Auth />
-            </Route>
-            {/* <Redirect from="*" to="/" /> */}
-          </>
-        )}
+        <>
+          {" "}
+          {/* Switch 안에 fragment를 사용해야 오류문구 발생 안함. div로 해도 기능상 문제는 없음 */}
+          {isLoggedIn ? (
+            <div
+              style={{
+                maxWidth: 890,
+                width: "100%",
+                margin: "0 auto",
+                marginTop: 80,
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              {/* Fragment */}
+              <Route exact path="/">
+                <Home userObj={userObj} />
+              </Route>
+              <Route exact path="/profile">
+                <Profile userObj={userObj} refreshUser={refreshUser} />
+              </Route>
+              {/* <Redirect from="*" to="/" /> */}
+            </div>
+          ) : (
+            <>
+              <Route exact path="/">
+                <Auth />
+              </Route>
+              {/* <Redirect from="*" to="/" /> */}
+            </>
+          )}
+        </>
       </Switch>
     </Router>
   );

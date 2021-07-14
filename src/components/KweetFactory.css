@@ -20,7 +20,7 @@
   height: 40px;
   padding: 0px 20px;
   color: white;
-  border: 1px solid #04aaff;
+  border: 1px solid #deaeee;
   border-radius: 20px;
   font-weight: 500;
   font-size: 12px;
@@ -34,7 +34,7 @@
 .factoryInput__arrow {
   position: absolute;
   right: 0;
-  background-color: #04aaff;
+  background-color: #deaeee;
   height: 40px;
   width: 40px;
   padding: 0px 0px 2px 0px;
@@ -45,7 +45,7 @@
 }
 
 .factoryInput__label {
-  color: #04aaff;
+  color: #deaeee;
   cursor: pointer;
 }
 

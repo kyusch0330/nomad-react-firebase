@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import AppRouter from "components/Router";
 import { authService } from "myFirebase";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
   //firebase가 실행되고 현재 유저정보를 가져오면 init = true
@@ -12,7 +14,10 @@ function App() {
     authService.onAuthStateChanged((user) => {
       if (user) {
         //로그인 O
-        if (!user.displayName) user.updateProfile({ displayName: "user" });
+        if (!user.displayName) {
+          user.updateProfile({ displayName: "user" });
+          user.displayName = "user";
+        }
         setUserObj(user);
       } else {
         //로그인 X
@@ -41,9 +46,21 @@ function App() {
           refreshUser={refreshUser}
         />
       ) : (
-        "Initializing..."
+        <div
+          style={{
+            width: "100%",
+            height: "100vh",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <FontAwesomeIcon icon={faSpinner} spin size="2x" />
+          <h3>Initializing...</h3>
+        </div>
       )}
-      <footer>&copy; Kwitter {new Date().getFullYear()}</footer>
+      {/* <footer>&copy; Kwitter {new Date().getFullYear()}</footer> */}
     </>
   );
 }

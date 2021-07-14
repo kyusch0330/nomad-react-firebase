@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { authService } from "myFirebase";
+import "./AuthForm.css";
+
 const AuthForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassWord] = useState("");
@@ -24,24 +26,19 @@ const AuthForm = () => {
     // prevent refresh
     event.preventDefault();
     try {
-      let data;
       if (newAccount) {
-        data = await authService.createUserWithEmailAndPassword(
-          email,
-          password
-        );
+        await authService.createUserWithEmailAndPassword(email, password);
         // createUser와 동시에 로그인도 수행함
       } else {
-        data = await authService.signInWithEmailAndPassword(email, password);
-        console.log("sign in...");
+        await authService.signInWithEmailAndPassword(email, password);
       }
     } catch (error) {
-      setError(error);
+      setError(error.message);
     }
   };
   return (
     <>
-      <form onSubmit={onSubmit} classNmae="container">
+      <form onSubmit={onSubmit} className="container">
         <input
           name="email"
           type="email"
@@ -49,7 +46,7 @@ const AuthForm = () => {
           required
           value={email}
           onChange={onChange}
-          classNmae="authInput"
+          className="authInput"
         />
         <input
           name="password"
@@ -58,12 +55,12 @@ const AuthForm = () => {
           required
           value={password}
           onChange={onChange}
-          classNmae="authInput"
+          className="authInput"
         />
         <input
           type="submit"
           value={newAccount ? "Create Account" : "Sign In"}
-          classNmae="authInput authSubmit"
+          className="authInput authSubmit"
         />
         {error && <span className="authError">{error}</span>}
       </form>

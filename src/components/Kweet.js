@@ -18,6 +18,7 @@ const Kweet = ({ kweetObj, isOwner }) => {
   };
   const toggleEditing = () => {
     setEditing((prev) => !prev);
+    setNewKweet(kweetObj.text);
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -60,20 +61,30 @@ const Kweet = ({ kweetObj, isOwner }) => {
         </>
       ) : (
         <>
-          <div>
-            <span>{kweetObj.text}</span>
+          <div className="kweet__info">
+            <span className="kweet__author">{kweetObj.name} </span>
+            <span className="kweet__time">
+              · {new Date(kweetObj.createdAt).toDateString()}
+            </span>
           </div>
-          {kweetObj.attachmentUrl && <img src={kweetObj.attachmentUrl} />}
-          {isOwner && (
-            <div className="kweet__actions">
-              <span onClick={handleDeleteClick}>
-                <FontAwesomeIcon icon={faTrash} />
-              </span>
-              <span onClick={toggleEditing}>
-                <FontAwesomeIcon icon={faPencilAlt} />
-              </span>
+          <div className="kweet__content">
+            <div>
+              <span>{kweetObj.text}</span>
             </div>
-          )}
+            {kweetObj.attachmentUrl && (
+              <img src={kweetObj.attachmentUrl} alt={"kweet"} />
+            )}
+            {isOwner && (
+              <div className="kweet__actions">
+                <span onClick={handleDeleteClick}>
+                  <FontAwesomeIcon icon={faTrash} color="#4e4e4e" />
+                </span>
+                <span onClick={toggleEditing}>
+                  <FontAwesomeIcon icon={faPencilAlt} color="#3e3e3e" />
+                </span>
+              </div>
+            )}
+          </div>
         </>
       )}
     </div>
