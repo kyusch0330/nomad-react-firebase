@@ -1,8 +1,6 @@
 # Cloning twitter with React and Firebase
 
-===
-
-### Address
+## Address
 
 https://kyusch0330.github.io/react-firebase-twitter
 
@@ -15,8 +13,6 @@ https://kyusch0330.github.io/react-firebase-twitter
 #### react-router
 
 #### react-hook
-
----
 
 ## Server
 
