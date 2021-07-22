@@ -6,7 +6,7 @@ import KweetFactory from "components/KweetFactory";
 const Home = ({ userObj }) => {
   const [kweets, setKweets] = useState([]);
   useEffect(() => {
-    //onSnapshot : db의 변화를 감지하는 listner (real time)
+    //onSnapshot : db의 변화를 감지하는 listener (real time)
     dbService.collection("kweets").onSnapshot((snapshot) => {
       const kweetArray = snapshot.docs.map((doc) => ({
         id: doc.id,
